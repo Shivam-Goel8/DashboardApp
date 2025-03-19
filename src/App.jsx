@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Order from "./Order";
 import Product from "./Product";
@@ -10,10 +10,10 @@ import Slidbar from './Slidebar/Slidbar'
 
 function App() {
   return (
-    <Router  >
+    <Router>
       <div>
-        <Slidbar /> 
-        <div >
+        <Slidbar />
+        <div>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/order" element={<Order />} />
