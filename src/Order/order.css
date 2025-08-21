@@ -1,0 +1,698 @@
+.orders-container {
+    background: #1a1a2e;
+    /* Darker background for the main content area */
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Enhanced shadow for depth */
+    max-width: calc(100% - 270px);
+    /* Adjust max-width for a 250px nav bar + 20px margin */
+    margin-left: 19%;
+    /* Space for a left navigation bar (e.g., 250px wide) */
+    margin-right: auto;
+    /* Center the remaining space */
+    /* margin-top: 40px; */
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    color: #e0e0e0;
+    /* Ensure text inside is light */
+}
+
+h2 {
+    color: #4CAF50;
+    /* A vibrant green for headings */
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    /* Bolder heading */
+    font-size: 35px;
+    /* Ensure consistency with the React component */
+}
+
+/* Search input styling */
+.search-order-input {
+    /* Corrected from .searchs-input */
+    width: 90%;
+    /* Keeping user's specified width */
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #3a3a5a;
+    /* Darker border */
+    background-color: #2a2a4a;
+    /* Darker input background */
+    color: #e0e0e0;
+    /* Light text color for input */
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-order-input::placeholder {
+    color: #b0b0b0;
+    /* Lighter placeholder text */
+}
+
+.search-order-input:focus {
+    border-color: #4CAF50;
+    /* Green highlight on focus */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+    /* Green shadow on focus */
+    outline: none;
+}
+
+/* Orders table styling */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.orders-table th,
+.orders-table td {
+    border: 1px solid #3a3a5a;
+    /* Darker table borders */
+    padding: 15px;
+    text-align: left;
+    color: #e0e0e0;
+    /* Light text for table cells */
+}
+
+.orders-table th {
+    background-color: #2a2a4a;
+    /* Darker header background */
+    color: #4CAF50;
+    /* Vibrant green for header text */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.orders-table tbody tr:nth-child(even) {
+    background-color: #1f1f3a;
+    /* Slightly lighter dark for even rows */
+}
+
+.orders-table tbody tr:hover {
+    background-color: #2f2f4a;
+    /* Hover effect */
+    transition: background-color 0.2s;
+}
+
+/* Status cell styling */
+.status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.status.completed {
+    background-color: #81c784;
+    /* Lighter green */
+    color: #000;
+}
+
+.status.pending {
+    background-color: #ffd54f;
+    /* Yellow */
+    color: #000;
+}
+
+.status.shipped {
+    background-color: #64b5f6;
+    /* Light blue */
+    color: #000;
+
+
+}
+
+.status.canceled {
+    background-color: #e57373;
+    /* Red */
+    color: #000;
+}
+
+/* Action button styling */
+.orders-table td button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    /* White text for buttons */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    margin-right: 8px;
+}
+
+.orders-table td button:last-child {
+    margin-right: 0;
+}
+
+.view-btn {
+    background-color: #42a5f5;
+    /* Blue */
+}
+
+.view-btn:hover {
+    background-color: #2196f3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(66, 165, 245, 0.3);
+}
+
+.complete-btn {
+    background-color: #66bb6a;
+    /* Green */
+}
+
+.complete-btn:hover {
+    background-color: #4CAF50;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102, 187, 106, 0.3);
+}
+
+.delete-btns {
+    background-color: #ef5350;
+    /* Red */
+}
+
+.delete-btns:hover {
+    background-color: #e53935;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(239, 83, 80, 0.3);
+}
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    /* Ensure modal is on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Slightly darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #2a2a4a;
+    /* Dark background for modal */
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+    color: #e0e0e0;
+    /* Light text for modal content */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close {
+    color: #e0e0e0;
+    /* Light close button */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #4CAF50;
+    /* Green highlight on hover */
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #4CAF50;
+    /* Green heading for modal */
+    border-bottom: 2px solid #3a3a5a;
+    /* Darker border */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.modal-content strong {
+    color: #4CAF50;
+    /* Green for strong text in modal */
+}
+
+/* Chart section styling */
+.chart_con {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    /* Adjust for navigation bar */
+    margin-left: 250px;
+    /* Space for a left navigation bar */
+    max-width: calc(100% - 270px);
+    /* Adjust max-width for nav bar */
+    box-sizing: border-box;
+    color: #e0e0e0;
+    /* Ensure text inside is light */
+}
+
+.chart-containera,
+.chart-containerb {
+    background: #1a1a2e;
+    /* Darker background for chart containers */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-containera h3,
+.chart-containerb h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #4CAF50;
+    /* Green heading for charts */
+    font-weight: 600;
+    font-size: 30px;
+    /* Ensure consistency with React component */
+}
+
+/* Recharts Tooltip styling - often needs custom CSS */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+    background-color: #2a2a4a !important;
+    /* Dark background for tooltip */
+    border: 1px solid #4CAF50 !important;
+    /* Green border for tooltip */
+    color: #e0e0e0 !important;
+    /* Light text for tooltip */
+}
+
+.recharts-tooltip-wrapper .recharts-tooltip-item {
+    color: #e0e0e0 !important;
+    /* Light text for tooltip items */
+}
+
+.recharts-legend-item {
+    color: #e0e0e0 !important;
+    /* Light text for legend items */
+}
+
+.recharts-cartesian-axis-tick-value {
+    fill: #e0e0e0 !important;
+    /* Light text for axis labels */
+}
+
+
+
+/* General button styling for orders */
+.add-new-order-btn,
+.add-order-submit-btn,
+.delete-confirm-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 5px 0 0;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add New Order button (outside modal) */
+.add-new-order-btn {
+    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    /* Green gradient */
+}
+
+.add-new-order-btn:hover {
+    background: linear-gradient(135deg, #43a047, #1b5e20);
+    transform: translateY(-2px);
+}
+
+/* Add Order submit button (inside modal) */
+.add-order-submit-btn {
+    background: linear-gradient(135deg, #42a5f5, #1565c0);
+    /* Blue gradient */
+}
+
+.add-order-submit-btn:hover {
+    background: linear-gradient(135deg, #1e88e5, #0d47a1);
+    transform: translateY(-2px);
+}
+
+/* Delete confirmation buttons */
+.delete-confirm-btn.confirm {
+    background: linear-gradient(135deg, #e53935, #b71c1c);
+    /* Red gradient */
+}
+
+.delete-confirm-btn.confirm:hover {
+    background: linear-gradient(135deg, #d32f2f, #7f0000);
+    transform: translateY(-2px);
+}
+
+.delete-confirm-btn.cancel {
+    background: linear-gradient(135deg, #9e9e9e, #616161);
+    /* Gray gradient */
+}
+
+.delete-confirm-btn.cancel:hover {
+    background: linear-gradient(135deg, #757575, #424242);
+    transform: translateY(-2px);
+}
+
+
+/* Responsive design */
+@media (max-width: 1024px) {
+
+    /* Adjust breakpoint for tablet sizes */
+    .orders-container,
+    .chart_con {
+        margin-left: 0;
+        /* Remove fixed margin, nav bar likely collapses or becomes overlay */
+        max-width: 95%;
+        /* Adjust width for smaller screens */
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .orders-container {
+        padding: 20px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .orders-table td button {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        margin-right: 0;
+    }
+
+    .chart_con {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .chart-containera,
+    .chart-containerb {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    .search-input {
+        font-size: 14px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 10px;
+    }
+}
+
+/* Full-screen modal background */
+.modal_order {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    /* Above other elements */
+}
+
+/* Modal content box */
+.modal-content-order {
+    background: #1a1a2e;
+    /* Dark card-style background */
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    color: #e0e0e0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Modal heading */
+.modal-content-order h3 {
+    margin-top: 0;
+    color: #4CAF50;
+    /* Green accent heading */
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Close button (×) */
+.modal-content-order .close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+.modal-content-order .close:hover {
+    color: #4CAF50;
+}
+
+/* Add Order Form */
+.add-order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+.add-order-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: #e0e0e0;
+    font-size: 15px;
+}
+
+/* Input fields */
+.add-order-form input,
+.add-order-form select {
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2a2a4a;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input hover/focus */
+.add-order-form input:focus,
+.add-order-form select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.5);
+}
+
+/* Submit Button */
+.add-order-submit-btn {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #42a5f5, #1565c0);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.add-order-submit-btn:hover {
+    background: linear-gradient(135deg, #1e88e5, #0d47a1);
+    transform: translateY(-2px);
+}
+
+
+/* Responsive for tablets (1024px) */
+@media (max-width: 1024px) {
+
+    .orders-container,
+    .chart_con {
+        margin-left: 0;
+        /* Sidebar collapse */
+        max-width: 95%;
+        margin-right: auto;
+    }
+
+    .chart_con {
+        gap: 30px;
+    }
+}
+
+/* Responsive for medium screens / tablets (768px) */
+@media (max-width: 768px) {
+    .orders-container {
+        padding: 20px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .orders-table td button {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        margin-right: 0;
+    }
+
+    .chart_con {
+        flex-direction: column;
+        gap: 20px;
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .chart-containera,
+    .chart-containerb {
+        max-width: 100%;
+    }
+}
+
+/* Responsive for small screens / mobile (480px) */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    .search-order-input {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .orders-table td button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .modal-content-order {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-content-order h3 {
+        font-size: 20px;
+    }
+
+    .add-order-form input,
+    .add-order-form select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .add-order-submit-btn,
+    .add-new-order-btn,
+    .delete-confirm-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .chart-containera h3,
+    .chart-containerb h3 {
+        font-size: 24px;
+    }
+}
+
+/* Extra small screens (360px) */
+@media (max-width: 360px) {
+
+    .orders-table th,
+    .orders-table td {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .orders-table td button {
+        padding: 6px 8px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .chart-containera h3,
+    .chart-containerb h3 {
+        font-size: 21px;
+    }
+
+    .chart-containera {
+        width: 100%;
+    }
+
+    .modal-content-order h3 {
+        font-size: 18px;
+    }
+}

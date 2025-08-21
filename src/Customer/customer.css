@@ -1,0 +1,268 @@
+.user-management-container {
+    padding: 20px;
+    background: #0f172a;
+    color: #f1f5f9;
+    min-height: 100vh;
+    margin-left: 20%;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Title */
+.title_user {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #38bdf8;
+    text-shadow: 0px 0px 8px rgba(56, 189, 248, 0.6);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Search Bar */
+/* Search Bar Input */
+.search-bar-customer input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #1e293b; /* dark background */
+    color: #f8fafc; /* text color */
+    font-size: 16px;
+    outline: none; /* remove blue highlight */
+}
+
+/* No hover or focus effect */
+.search-bar-customer input:hover,
+.search-bar-customer input:focus {
+    border: 1px solid #334155;
+    background: #1e293b;
+    box-shadow: none;
+}
+
+/* Placeholder text color */
+.search-bar-customer input::placeholder {
+    color: #64748b; /* subtle gray */
+}
+
+
+/* Fancy Buttons */
+.add-user-btn {
+    background: linear-gradient(45deg, #06b6d4, #2563eb);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.add-user-btn:hover {
+    background: linear-gradient(45deg, #0891b2, #1d4ed8);
+    transform: scale(1.05);
+}
+
+.export-user-btn {
+    background: linear-gradient(45deg, #10b981, #059669);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.export-user-btn:hover {
+    background: linear-gradient(45deg, #059669, #047857);
+    transform: scale(1.05);
+}
+
+/* Table Styling */
+.customer-table {
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #1e293b;
+}
+
+.ant-table-wrapper,
+.ant-table,
+.ant-table-container {
+    background: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+
+.ant-table-thead>tr>th {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-bottom: 1px solid #334155;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ant-table-tbody>tr>td {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-bottom: 1px solid #1e293b;
+    text-align: center;
+}
+
+.ant-table-tbody>tr:hover>td {
+    background: #1e293b !important;
+}
+
+
+/* Edit Button */
+.edits-bt {
+    margin-right: 8px;
+    background: linear-gradient(45deg, #3b82f6, #2563eb)  !important;
+    border: none;
+    color: white !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.edits-bt:hover {
+    background: linear-gradient(45deg, #2563eb, #1d4ed8);
+    transform: scale(1.1);
+}
+
+
+/* Delete Button */
+/* Delete Button */
+.del-btn.ant-btn {
+    background: linear-gradient(45deg, #ef4444, #dc2626) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease;
+}
+
+.del-btn.ant-btn:hover {
+    background: linear-gradient(45deg, #dc2626, #b91c1c) !important;
+    transform: scale(1.1);
+}
+
+
+
+/* Chart Section */
+.charts-container {
+    margin-top: 30px;
+}
+
+.chart-card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    color: #f1f5f9;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive for large screens / sidebar adjustments */
+@media (max-width: 1200px) {
+    .user-management-container {
+        margin-left: 0; /* remove fixed sidebar margin */
+        padding: 20px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Responsive for tablets (768px) */
+@media (max-width: 768px) {
+    .title_user {
+        font-size: 24px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar-customer input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .add-user-btn, .export-user-btn, .edits-bt, .del-btn.ant-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .chart-card {
+        padding: 15px;
+    }
+}
+
+/* Responsive for mobile screens (480px) */
+@media (max-width: 480px) {
+    .title_user {
+        font-size: 20px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-bar-customer input {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .add-user-btn, .export-user-btn, .edits-bt, .del-btn.ant-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .chart-card {
+        padding: 12px;
+    }
+}
+
+/* Extra small screens (360px) */
+@media (max-width: 360px) {
+    .title_user {
+        font-size: 18px;
+    }
+
+    .controls {
+        gap: 6px;
+    }
+
+    .search-bar-customer input {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .add-user-btn, .export-user-btn, .edits-bt, .del-btn.ant-btn {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .chart-card {
+        padding: 10px;
+    }
+}

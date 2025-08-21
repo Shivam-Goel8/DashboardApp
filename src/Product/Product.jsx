@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBox, FaWarehouse, FaMoneyBillWave } from "react-icons/fa";
-import { Pie, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale, BarElement } from 'chart.js';
-import "./style.css";
+import "./product.css";
 
 // Register chart.js components
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale, BarElement);
@@ -58,29 +57,7 @@ const Product = () => {
     );
   };
 
-  // Prepare data for Pie and Bar charts
-  const pieChartData = {
-    labels: products.map(product => product.name),
 
-    datasets: [
-      {
-        label: 'Stock Distribution',
-        data: products.map(product => product.stock),
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40', '#4BC0C0', '#9966FF', '#FF6600', '#FF3366', '#33CCFF', '#FF6600'],
-      }
-    ]
-  };
-
-  const barChartData = {
-    labels: products.map(product => product.name),
-    datasets: [
-      {
-        label: 'Price (₹)',
-        data: products.map(product => product.price),
-        backgroundColor: '#FF5733',
-      }
-    ]
-  };
 
   return (
     <div className="product-container">
@@ -97,7 +74,7 @@ const Product = () => {
       <input
         type="text"
         placeholder="Search products..."
-        className="search-input"
+        className="search-input-product"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
@@ -157,24 +134,24 @@ const Product = () => {
         </div>
       )}
 
-      {/* Pie Chart for Stock Distribution */}
-      <div className="graph_con">
-        <div className="chart-containers">
-          <h3>Product Stock Distribution</h3>
-          <Pie data={pieChartData}  height={400} width={500}/>
-        </div>
 
-        {/* Bar Chart for Product Prices */}
-        <div className="chart-containers">
-          <h3>Product Price Distribution</h3>
-          <Bar
-            data={barChartData}
-            height={300}
-            width={600} // Adjust the width as needed
-          />
-        </div>
-      </div>
-
+      {/* Sort Dropdown */}
+      <select
+        className="sort-dropdown"
+        onChange={(e) => {
+          const sortType = e.target.value;
+          let sortedProducts = [...products];
+          if (sortType === "price-asc") sortedProducts.sort((a, b) => a.price - b.price);
+          if (sortType === "price-desc") sortedProducts.sort((a, b) => b.price - a.price);
+          if (sortType === "stock") sortedProducts.sort((a, b) => a.stock - b.stock);
+          setProducts(sortedProducts);
+        }}
+      >
+        <option value="">Sort by</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="stock">Stock</option>
+      </select>
 
     </div>
   );

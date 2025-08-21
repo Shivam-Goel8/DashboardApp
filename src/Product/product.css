@@ -1,0 +1,328 @@
+/* Container */
+.product-container {
+    padding: 20px;
+    background: #0f172a;
+    /* dark dashboard background */
+    color: #f1f5f9;
+    margin-left: 20%;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Heading */
+.heading_product {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #38bdf8;
+    /* cyan accent */
+}
+
+/* Summary Cards */
+.product-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.product-card {
+    padding: 20px;
+    border-radius: 12px;
+    color: #1e293b;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card .icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Search Input */
+.search-input-product {
+    width: 90%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #f8fafc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.search-input-product:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+}
+
+/* Sort Dropdown */
+.sort-dropdown {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #f8fafc;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+/* Product Table */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.product-table th,
+.product-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+}
+
+.product-table th {
+    background: #0f172a;
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.product-table tr:hover {
+    background: rgba(56, 189, 248, 0.1);
+    transition: 0.2s ease;
+}
+
+/* Low stock highlight */
+.low-stock {
+    color: #f87171;
+    /* red */
+    font-weight: bold;
+}
+
+.medium-stock {
+    color: #facc15;
+    /* yellow */
+    font-weight: 600;
+}
+
+.high-stock {
+    color: #4ade80;
+    /* green */
+    font-weight: 600;
+}
+
+/* Delete Button */
+.delete-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s;
+}
+
+.delete-button:hover {
+    background: linear-gradient(135deg, #dc2626, #7f1d1d);
+    transform: scale(1.05);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 8px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #1e293b;
+    color: #f1f5f9;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pagination button:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+
+/* Enlarged Image Modal */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    animation: fadeIn 0.3s ease;
+}
+
+.enlarged-image {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.3s ease;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive for large screens / sidebar adjustments */
+@media (max-width: 1200px) {
+    .product-container {
+        margin-left: 0; /* Remove fixed sidebar margin */
+        padding: 20px;
+    }
+
+    .product-summary {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+    }
+
+    .search-input-product,
+    .sort-dropdown {
+        width: 100%;
+    }
+}
+
+/* Responsive for tablets (768px) */
+@media (max-width: 768px) {
+    .heading_product {
+        font-size: 24px;
+    }
+
+    .product-summary {
+        grid-template-columns: 1fr 1fr; /* Two cards per row */
+        gap: 10px;
+    }
+
+    .product-card {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .search-input-product,
+    .sort-dropdown {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .product-table th, .product-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .delete-button {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .pagination button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+/* Responsive for small screens / mobile (480px) */
+@media (max-width: 480px) {
+    .heading_product {
+        font-size: 20px;
+    }
+
+    .product-summary {
+        grid-template-columns: 1fr; /* Single card per row */
+        gap: 8px;
+    }
+
+    .search-input-product,
+    .sort-dropdown {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .product-table th, .product-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .delete-button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .pagination button {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .image-modal .enlarged-image {
+        max-width: 90%;
+        max-height: 70%;
+    }
+}
+
+/* Extra small screens (360px) */
+@media (max-width: 360px) {
+    .heading_product {
+        font-size: 18px;
+    }
+
+    .product-summary {
+        gap: 6px;
+    }
+
+    .product-table th, .product-table td {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .delete-button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
+    .pagination button {
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+}
